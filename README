@@ -1,0 +1,48 @@
+Assumption:
+- The API is the software of a vending machine, this machine belongs to a company that may have one or more administrators and, therefore,
+The administrator can perform service tasks on the vending machine.
+
+- For an administrator to manipulate the machine, he must first log in to the login_check endpoint
+
+- If the company wants to add more administrators, they must register the person at the registration endpoint
+
+- The administrator and the client can use the machine to buy products. But it is only the administrator who can manipulate the cash of the machine and the products
+
+Requirements:
+Download the project do => git clone https://github.com/peirinhas/vending-machine-api
+
+
+Login_check endpoint
+type: POST
+endpoint: http://localhost: 8080/api/v1/login_check
+params: _email and _password
+Content type: application/x-www-form-urlencoded
+
+Registration end point
+type: POST
+endpoint: http://localhost: 8080/api/v1/users/register
+parameters: name, email, password
+Content type: app/json
+
+If you want to search documentation, see API http://localhost:8080/api/v1/docs
+
+Instructions on how to run your solution:
+
+For all tests, initialize with the same dataset, in the AppFixture.php file (/src/DataFixtures)
+Find the default settings for testing.
+You can modify, add or delete products.
+The only requirement is that you have the vending machine.
+
+To run the tests, place them at the height of the project's src folder and run the following commands:
+
+/* Start containers */
+make run
+
+/* Execute backend commands */
+make prepare
+
+/* In the container docker */
+make ssh-be
+
+/* run functional and unit test */
+bin/phpunit

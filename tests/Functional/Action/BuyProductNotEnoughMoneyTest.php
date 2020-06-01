@@ -10,9 +10,9 @@ class BuyProductNotEnoughMoneyTest extends ActionTestBase
 {
 
     /*
-     * Example: Buy Soda with exact change
+     * Example: Buy Soda without money
      * Looks products, insert 1, insert 0.25, GET-SODA
-     * -> SODA
+     * -> Wallet does not have enough money to buy Soda
      */
     public function testBuyProductNotEnoughWalletForCustomer(): void
     {
