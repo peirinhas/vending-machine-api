@@ -1,0 +1,82 @@
+App\Entity\Machine:
+  attributes:
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("PRODUCT_READ")'
+      normalization_context:
+        groups: ['machine_read']
+
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("MACHINE_READ", object)'
+      normalization_context:
+        groups: ['machine_read']
+
+    patch_wallet:
+      method: 'PATCH'
+      path: '/machines/insert-wallet/{id}'
+      security: 'is_granted("MACHINE_UPDATE_WALLET", object)'
+      normalization_context:
+        groups: ['machine_read']
+      denormalization_context:
+        groups: ['machine_patch_insert_wallet']
+      swagger_context:
+        parameters:
+          - in: body
+            name: machine
+            description: The wallet to update
+            schema:
+              type: object
+              required:
+                - wallet
+              properties:
+                wallet:
+                  type: number
+
+    return_wallet:
+      method: 'PATCH'
+      path: '/machines/return-wallet/{id}'
+      security: 'is_granted("MACHINE_PATCH_RETURN_WALLET", object)'
+      normalization_context:
+        groups: ['machine_read']
+      denormalization_context:
+        groups: ['machine_patch_return_wallet']
+
+    patch_cash:
+      method: 'PATCH'
+      path: '/machines/insert-cash/{id}'
+      security: 'is_granted("MACHINE_UPDATE_CASH", object)'
+      normalization_context:
+        groups: ['machine_read_insert_cash']
+      denormalization_context:
+        groups: ['machine_patch_insert_cash']
+      swagger_context:
+        parameters:
+          - in: body
+            name: machine
+            description: The wallet to update
+            schema:
+              type: object
+              required:
+                - cash
+              properties:
+                cash:
+                  type: number
+
+    return_cash:
+      method: 'PATCH'
+      path: '/machines/return-cash/{id}'
+      security: 'is_granted("MACHINE_PATCH_RETURN_CASH", object)'
+      normalization_context:
+        groups: ['machine_read_return_cash']
+      denormalization_context:
+        groups: ['machine_patch_return_cash']
+
+  properties:
+    products:
+      subresource:
+        subresourceClass: 'App\Entity\Product'
+        collection: true
+        maxDepth: 1

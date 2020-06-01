@@ -1,0 +1,84 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: 'auto'
+
+    providers:
+        user_provider:
+            id: App\Security\Core\User\UserProvider
+
+    firewalls:
+        products:
+            pattern: ^/api/v1/products
+            methods: [GET]
+            stateless: true
+            anonymous: true
+
+        products_stock:
+            pattern: ^/api/v1/products/update-stock
+            methods: [PATCH]
+            stateless: true
+            anonymous: true
+
+        machines_get:
+            pattern: /api/v1/machines
+            methods: [GET]
+            stateless: true
+            anonymous: true
+
+        machines_insert_wallet:
+            pattern: ^/api/v1/machines/insert-wallet
+            methods: [PATCH]
+            stateless: true
+            anonymous: true
+
+        machines_delete_wallet:
+            pattern: ^/api/v1/machines/return-wallet
+            methods: [PATCH]
+            stateless: true
+            anonymous: true
+
+        products_update_stock:
+            pattern: ^/api/v1/products/buy
+            methods: [PATCH]
+            stateless: true
+            anonymous: true
+
+        register:
+            pattern: ^/api/v1/users/register
+            methods: [POST]
+            security: false
+
+        docs:
+            pattern: ^/api/v1/docs
+            methods: [GET]
+            security: false
+
+
+        login:
+            pattern: ^/api/v1/login
+            stateless: true
+            anonymous: true
+            provider: user_provider
+            form_login:
+                check_path: /api/v1/login_check
+                username_parameter: _email
+                password_parameter: _password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
+        api:
+            pattern: ^/api/v1
+            stateless: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+    access_control:
+        - { path: ^/api/v1/products, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/machines, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/machines/insert-wallet, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/machines/return-wallet, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/products/buy, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1, roles: IS_AUTHENTICATED_FULLY }

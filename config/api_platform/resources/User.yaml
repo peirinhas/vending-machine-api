@@ -1,0 +1,12 @@
+App\Entity\User:
+  attributes:
+    normalization_context:
+      groups: ['user_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("USER_READ")'
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("USER_READ", object)'

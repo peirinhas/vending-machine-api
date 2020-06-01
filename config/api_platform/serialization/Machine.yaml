@@ -1,0 +1,10 @@
+App\Entity\Machine:
+  attributes:
+    id:
+      groups: ['machine_read', 'machine_read_return_cash']
+    cash:
+      groups: ['machine_patch_insert_cash' ,
+               'machine_read_return_cash' ,
+               'machine_read_insert_cash']
+    wallet:
+      groups: ['machine_read', 'machine_patch_insert_wallet']

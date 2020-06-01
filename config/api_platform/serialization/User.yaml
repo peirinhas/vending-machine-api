@@ -1,0 +1,14 @@
+App\Entity\User:
+  attributes:
+    id:
+      groups: ['user_read']
+    name:
+      groups: ['user_read']
+    email:
+      groups: ['user_read']
+    roles:
+      groups: ['user_read']
+  createdAt:
+    groups: ['machine_read']
+  updatedAt:
+    groups: ['machine_read']

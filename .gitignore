@@ -1,0 +1,22 @@
+
+###> symfony/framework-bundle ###
+/.env.local
+/.env.local.php
+/.env.*.local
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+
+###> Other files ###
+.idea
+.env.local
+.DS_store
+.docker-sync
+.php_cs.cache
+config/jwt
+.php_cs.cache
+bin/.phpunit
+.unison.Makefile.74bf2e92d2da411fd28058cb79951189.unison.tmp
+###< Other files ###
