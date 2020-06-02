@@ -1,12 +1,8 @@
-App\Entity\Product:
+App\Entity\HistorySale:
   attributes:
-    id:
-      groups: ['product_read']
-    machine:
-      groups: ['product_read','product_post']
-    name:
-      groups: ['product_read', 'product_post','product_patch']
+    product:
+      groups: ['history_sale_read']
     cost:
-      groups: ['product_read', 'product_post','product_patch']
-    stock:
-      groups: ['product_read', 'product_post','product_patch']
+      groups: ['history_sale_read']
+    createdAt:
+      groups: ['history_sale_read']

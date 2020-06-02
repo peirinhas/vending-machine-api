@@ -2,6 +2,9 @@ App\Entity\Product:
   attributes:
     normalization_context:
       groups: ['product_read']
+    filters:
+      - app.product.search_filter
+      - app.product.order_filter
   collectionOperations:
     get:
       method: 'GET'

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Entity\HistorySale;
 use App\Entity\Machine;
 use App\Entity\Product;
 use App\Exception\Product\ProductExistException;
@@ -35,5 +36,14 @@ class ProductRepository extends BaseRepository
     public function updateMachine(Machine $machine): void
     {
         $this->saveEntity($machine);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function addSale(Product $product): void
+    {
+        $sale = new HistorySale($product, $product->getCost());
+        $this->saveEntity($sale);
     }
 }

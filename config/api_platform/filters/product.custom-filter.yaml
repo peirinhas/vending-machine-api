@@ -1,0 +1,18 @@
+services:
+  app.product.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    arguments:
+      - { name: partial }
+    tags:
+      - { name: 'api_platform.filter' , id: 'app.product.search_filter'}
+    autowire: false
+    autoconfigure: false
+
+  app.product.order_filter:
+    parent: 'api_platform.doctrine.orm.order_filter'
+    arguments:
+      - { name: DESC, cost: DESC, stock: DESC }
+    tags:
+      - { name: 'api_platform.filter' , id: 'app.product.order_filter'}
+    autowire: false
+    autoconfigure: false

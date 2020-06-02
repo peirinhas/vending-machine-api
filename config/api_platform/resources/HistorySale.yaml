@@ -1,0 +1,16 @@
+App\Entity\HistorySale:
+  attributes:
+    normalization_context:
+      groups: ['history_sale_read']
+    filters:
+      - app.historySale.search_filter
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter
+      - ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("HISTORY_SALE_READ")'
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("HISTORY_SALE_READ", object)'

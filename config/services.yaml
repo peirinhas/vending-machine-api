@@ -1,3 +1,7 @@
+imports:
+    - { resource: api_platform/filters/product.custom-filter.yaml }
+    - { resource: api_platform/filters/historySale.custom-filter.yaml }
+
 services:
     _defaults:
         autowire: true
@@ -25,3 +29,13 @@ services:
 
         App\Security\Validator\Role\RoleValidator:
             tags: [ 'app.role_validator' ]
+
+    # API Platform filters
+    ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter:
+        tags: [ 'api_platform.filter' ]
+
+    ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter:
+        tags: [ 'api_platform.filter' ]
+
+    ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter:
+        tags: [ 'api_platform.filter' ]

@@ -4,35 +4,26 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\MachineRepository;
 use Ramsey\Uuid\Uuid;
 
-class Product
+class HistorySale
 {
     protected ?string $id;
 
-    private ?Machine $machine;
-
-    protected string $name;
+    private Product $product;
 
     protected float $cost;
 
-    protected int $stock;
-
     private ?\DateTime $createdAt = null;
-
-    private ?\DateTime $updatedAt = null;
 
     /**
      * @throws \Exception
      */
-    public function __construct(Machine $machine, string $name, float $cost, int $stock, string $id = null)
+    public function __construct(Product $product, float $cost, string $id = null)
     {
         $this->id = $id ?? Uuid::uuid4()->toString();
-        $this->machine = $machine;
-        $this->name = $name;
+        $this->product = $product;
         $this->cost = $cost;
-        $this->stock = $stock;
         $this->createdAt = new \DateTime();
         $this->markAsUpdated();
     }
@@ -42,19 +33,9 @@ class Product
         return $this->id;
     }
 
-    public function getMachine(): Machine
+    public function getProduct(): Product
     {
-        return $this->machine;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
+        return $this->product;
     }
 
     public function getCost(): float
@@ -65,16 +46,6 @@ class Product
     public function setCost(float $cost): void
     {
         $this->cost = $cost;
-    }
-
-    public function getStock(): int
-    {
-        return $this->stock;
-    }
-
-    public function setStock(int $stock): void
-    {
-        $this->stock = $stock;
     }
 
     public function getCreatedAt(): \DateTime
@@ -92,28 +63,8 @@ class Product
         $this->updatedAt = new \DateTime();
     }
 
-    public function isOwnedByMachine(Machine $machine): bool
+    public function isOwnedByProduct(Machine $product): bool
     {
-        return $this->getMachine()->getId() === $machine->getId();
-    }
-
-    public function getWallet(): float
-    {
-        return $this->getMachine()->getWallet();
-    }
-
-    public function setWallet(float $wallet): void
-    {
-        $this->getMachine()->setWallet($wallet);
-    }
-
-    public function getCash(): float
-    {
-        return $this->getMachine()->getCash();
-    }
-
-    public function setCash(float $cash): void
-    {
-        $this->getMachine()->setCash($cash);
+        return $this->getProduct()->getId() === $product->getId();
     }
 }

@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
             $manager->persist($machine);
 
             foreach ($machineData['products'] as $productData) {
-                $product = new Product($machine, $productData['name'], $productData['cost'], $productData['stock'],$productData['id']);
+                $product = new Product($machine, $productData['name'], $productData['cost'], $productData['stock'], $productData['id']);
                 $manager->persist($product);
             }
         }

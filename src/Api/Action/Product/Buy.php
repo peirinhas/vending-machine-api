@@ -51,6 +51,7 @@ class Buy
         $product->setWallet($newWallet);
         $product->setCash($newCash);
         $product->setStock($newStock);
+        $this->productRepository->addSale($product);
         $this->productRepository->updateMachine($machine);
         $this->productRepository->save($product);
 

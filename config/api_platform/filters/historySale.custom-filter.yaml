@@ -1,0 +1,9 @@
+services:
+  app.historySale.search_filter:
+    parent: 'api_platform.doctrine.orm.search_filter'
+    arguments:
+      - { product: partial, cost: partial }
+    tags:
+      - { name: 'api_platform.filter' , id: 'app.historySale.search_filter'}
+    autowire: false
+    autoconfigure: false
