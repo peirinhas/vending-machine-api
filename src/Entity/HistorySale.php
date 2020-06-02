@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Repository\MachineRepository;
 use Ramsey\Uuid\Uuid;
 
 class Product

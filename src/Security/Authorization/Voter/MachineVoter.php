@@ -18,7 +18,6 @@ class MachineVoter extends BaseVoter
     public const MACHINE_UPDATE_CASH = 'MACHINE_UPDATE_CASH';
     public const MACHINE_PATCH_RETURN_CASH = 'MACHINE_PATCH_RETURN_CASH';
 
-
     protected function supports(string $attribute, $subject): bool
     {
         return \in_array($attribute, $this->getSupportedAttributes(), true);

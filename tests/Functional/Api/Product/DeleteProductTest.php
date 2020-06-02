@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class DeleteProductTest extends ProductTestBase
 {
-
     /*
      *
      *  End point [DELETE] product

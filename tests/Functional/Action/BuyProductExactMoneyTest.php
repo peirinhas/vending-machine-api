@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BuyProductExactMoneyTest extends ActionTestBase
 {
-
     /*
      * Example: Buy Soda with exact change
      * Looks products, insert 1, insert 0.25, insert 0.25, GET-SODA
@@ -17,18 +16,18 @@ class BuyProductExactMoneyTest extends ActionTestBase
     public function testBuyProductExactMoneyTestForCustomer(): void
     {
         //Customer looks at the products
-        self::$customer->request('GET', \sprintf('%s/%s/%s.%s', $this->endpointMachine, self::ID_MACHINE,'products', self::FORMAT));
+        self::$customer->request('GET', \sprintf('%s/%s/%s.%s', $this->endpointMachine, self::ID_MACHINE, 'products', self::FORMAT));
 
         $response = self::$customer->getResponse();
         $responseData = $this->getResponseData($response);
         $this->assertCount(3, $responseData['hydra:member']);
-        $this->assertEquals('Soda',$responseData['hydra:member'][2]['name']);
-        $this->assertEquals(10,$responseData['hydra:member'][2]['stock']);
-        $this->assertEquals(1.5,$responseData['hydra:member'][2]['cost']);
+        $this->assertEquals('Soda', $responseData['hydra:member'][2]['name']);
+        $this->assertEquals(10, $responseData['hydra:member'][2]['stock']);
+        $this->assertEquals(1.5, $responseData['hydra:member'][2]['cost']);
 
         //First insert wallet
         $payload = [
-            'wallet' => 1
+            'wallet' => 1,
         ];
 
         self::$customer->request(
@@ -48,7 +47,7 @@ class BuyProductExactMoneyTest extends ActionTestBase
 
         //second insert wallet
         $payload = [
-            'wallet' => 0.25
+            'wallet' => 0.25,
         ];
 
         self::$customer->request(
@@ -68,7 +67,7 @@ class BuyProductExactMoneyTest extends ActionTestBase
 
         //third insert wallet
         $payload = [
-            'wallet' => 0.25
+            'wallet' => 0.25,
         ];
 
         self::$customer->request(

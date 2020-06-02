@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PostProductTest extends ProductTestBase
 {
-
     /*
      *
      *  End point [POST] product
@@ -17,11 +16,10 @@ class PostProductTest extends ProductTestBase
     public function testPostProductForAdmin(): void
     {
         $payload = [
-            'machine'=> '/api/v1/machines/0f6acbf3-a958-4d2e-9352-bd17f469b002',
+            'machine' => '/api/v1/machines/0f6acbf3-a958-4d2e-9352-bd17f469b002',
             'name' => 'snack',
-            'cost' =>  1.15,
-            'stock' => 10
-
+            'cost' => 1.15,
+            'stock' => 10,
         ];
 
         self::$admin->request(
@@ -52,11 +50,10 @@ class PostProductTest extends ProductTestBase
     public function testPostProductForCustomer(): void
     {
         $payload = [
-            'machine'=> '/api/v1/machines/0f6acbf3-a958-4d2e-9352-bd17f469b002',
+            'machine' => '/api/v1/machines/0f6acbf3-a958-4d2e-9352-bd17f469b002',
             'name' => 'snack',
-            'cost' =>  1.15,
-            'stock' => 10
-
+            'cost' => 1.15,
+            'stock' => 10,
         ];
 
         self::$customer->request(

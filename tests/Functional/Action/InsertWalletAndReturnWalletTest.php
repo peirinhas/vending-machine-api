@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class InsertWalletAndReturnWalletTest extends ActionTestBase
 {
-
     /*
      * Example: Start adding money, but user ask for return coin
      *   0.10, 0.10, RETURN-COIN
@@ -17,7 +16,7 @@ class InsertWalletAndReturnWalletTest extends ActionTestBase
     public function testPatchProductForCustomer(): void
     {
         $payload = [
-            'wallet' => 0.10
+            'wallet' => 0.10,
         ];
 
         //First insert wallet

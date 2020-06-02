@@ -1,0 +1,82 @@
+App\Entity\Product:
+  attributes:
+    normalization_context:
+      groups: ['product_read']
+  collectionOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("PRODUCT_READ")'
+    post:
+      method: 'POST'
+      security: 'is_granted("PRODUCT_CREATE")'
+      denormalization_context:
+        groups: ['product_post']
+      swagger_context:
+        parameters:
+          - in: body
+            name: product
+            description: The product to create
+            schema:
+              type: object
+              required:
+                - machine
+                - name
+                - cost
+                - stock
+              properties:
+                machine:
+                  type: string
+                name:
+                  type: string
+                cost:
+                  type: number
+                  format: float
+                stock:
+                  type: number
+  itemOperations:
+    get:
+      method: 'GET'
+      security: 'is_granted("PRODUCT_READ", object)'
+    patch_product:
+      method: 'PATCH'
+      security: 'is_granted("PRODUCT_UPDATE", object)'
+      denormalization_context:
+        groups: ['product_patch']
+      swagger_context:
+        parameters:
+          - in: body
+            name: product
+            description: The product to update
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                cost:
+                  type: number
+                  format: float
+                stock:
+                  type: number
+    patch_stock:
+      method: 'PATCH'
+      path: '/products/buy/{id}'
+      security: 'is_granted("PRODUCT_BUY", object)'
+      denormalization_context:
+        groups: ['product_buy']
+      swagger_context:
+        parameters:
+          - in: body
+            name: product
+            description: The stock of product to update
+            wallet:
+              type: number
+            schema:
+              type: object
+              required:
+                - id
+              properties:
+                id:
+                  type: strng
+    delete:
+      method: 'DELETE'
+      security: 'is_granted("PRODUCT_DELETE", object)'

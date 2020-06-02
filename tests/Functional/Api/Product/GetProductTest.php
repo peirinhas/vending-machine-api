@@ -42,7 +42,6 @@ class GetProductTest extends ProductTestBase
      */
     public function testGetProductWithAdmin(): void
     {
-
         self::$admin->request('GET', \sprintf('%s/%s.%s', $this->endpoint, self::IDS_PRODUCT['water'], self::FORMAT));
 
         $response = self::$admin->getResponse();
@@ -52,7 +51,6 @@ class GetProductTest extends ProductTestBase
         $this->assertEquals(self::IDS_PRODUCT['water'], $responseData['id']);
         $this->assertEquals(0.65, $responseData['cost']);
         $this->assertEquals(10, $responseData['stock']);
-
     }
 
     public function testGetProductWithCustomer(): void

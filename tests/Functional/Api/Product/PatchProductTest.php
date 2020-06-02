@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class PatchProductTest extends ProductTestBase
 {
-
     /*
      *
      *  End point [PATCH] product
@@ -17,8 +16,8 @@ class PatchProductTest extends ProductTestBase
     public function testPatchProductForCustomer(): void
     {
         $payload = [
-            'cost' =>  0.50,
-            'stock' => 8
+            'cost' => 0.50,
+            'stock' => 8,
         ];
 
         self::$customer->request(

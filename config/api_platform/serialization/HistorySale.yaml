@@ -1,0 +1,12 @@
+App\Entity\Product:
+  attributes:
+    id:
+      groups: ['product_read']
+    machine:
+      groups: ['product_read','product_post']
+    name:
+      groups: ['product_read', 'product_post','product_patch']
+    cost:
+      groups: ['product_read', 'product_post','product_patch']
+    stock:
+      groups: ['product_read', 'product_post','product_patch']

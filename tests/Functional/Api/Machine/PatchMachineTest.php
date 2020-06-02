@@ -16,7 +16,7 @@ class PatchMachineTest extends MachineTestBase
     public function testPatchInsertCashForAdmin(): void
     {
         $payload = [
-            'cash' => 0.25
+            'cash' => 0.25,
         ];
 
         self::$admin->request(
@@ -57,7 +57,7 @@ class PatchMachineTest extends MachineTestBase
     public function testPatchInsertCashUnsupportedCoinForAdmin(): void
     {
         $payload = [
-            'cash' => 0.8
+            'cash' => 0.8,
         ];
 
         self::$admin->request(
@@ -84,7 +84,7 @@ class PatchMachineTest extends MachineTestBase
     public function testPatchInsertWalletForAdmin(): void
     {
         $payload = [
-            'wallet' => 0.25
+            'wallet' => 0.25,
         ];
 
         self::$admin->request(
@@ -128,7 +128,7 @@ class PatchMachineTest extends MachineTestBase
     public function testPatchInsertWalletUnsupportedCoinForAdmin(): void
     {
         $payload = [
-            'wallet' => 0.8
+            'wallet' => 0.8,
         ];
 
         self::$admin->request(
@@ -150,7 +150,7 @@ class PatchMachineTest extends MachineTestBase
     public function testPatchInsertWalletUnsupportedCoinForCustomer(): void
     {
         $payload = [
-            'wallet' => 0.8
+            'wallet' => 0.8,
         ];
 
         self::$customer->request(

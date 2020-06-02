@@ -55,6 +55,5 @@ class Buy
         $this->productRepository->save($product);
 
         return new JsonResponse(['product' => \sprintf('GET %s', $productName)]);
-
     }
 }

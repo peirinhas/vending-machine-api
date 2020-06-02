@@ -32,6 +32,7 @@ class ProductRepository extends BaseRepository
         $this->saveEntity($product);
     }
 
+
     public function updateMachine(Machine $machine): void
     {
         $this->saveEntity($machine);

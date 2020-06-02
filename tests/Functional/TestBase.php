@@ -26,7 +26,7 @@ class TestBase extends WebTestCase
     protected const  IDS_PRODUCT = [
         'water' => '0f6acbf3-a958-4d2e-9352-bd17f469b003',
         'juice' => '0f6acbf3-a958-4d2e-9352-bd17f469b004',
-        'soda' => '0f6acbf3-a958-4d2e-9352-bd17f469b005'
+        'soda' => '0f6acbf3-a958-4d2e-9352-bd17f469b005',
     ];
 
     protected static ?KernelBrowser $client = null;
