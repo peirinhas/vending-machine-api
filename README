@@ -14,13 +14,13 @@ Download the project do => git clone https://github.com/peirinhas/vending-machin
 
 Login_check endpoint
 type: POST
-endpoint: http://localhost: 8080/api/v1/login_check
+endpoint: http://localhost:8080/api/v1/login_check
 params: _email and _password
 Content type: application/x-www-form-urlencoded
 
 Registration end point
 type: POST
-endpoint: http://localhost: 8080/api/v1/users/register
+endpoint: http://localhost:8080/api/v1/users/register
 parameters: name, email, password
 Content type: app/json
 
@@ -41,8 +41,8 @@ make run
 /* Execute backend commands */
 make prepare
 
-/* In the container docker */
+/* Get in the container docker */
 make ssh-be
 
-/* run functional and unit test */
+/* Run functional and unit test inside container */
 bin/phpunit
