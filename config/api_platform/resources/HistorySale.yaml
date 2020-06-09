@@ -10,7 +10,14 @@ App\Entity\HistorySale:
     get:
       method: 'GET'
       security: 'is_granted("HISTORY_SALE_READ")'
+      openapi_context:
+        summary: Get the collection of sale
+        description: End point to get all sales
+
   itemOperations:
     get:
       method: 'GET'
       security: 'is_granted("HISTORY_SALE_READ", object)'
+      openapi_context:
+        summary: Get one sale
+        description: End point to get one sale

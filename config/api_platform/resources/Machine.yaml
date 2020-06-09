@@ -6,6 +6,9 @@ App\Entity\Machine:
       security: 'is_granted("PRODUCT_READ")'
       normalization_context:
         groups: ['machine_read']
+      openapi_context:
+        summary: Get the collection of machines
+        description: End point to get all machines
 
   itemOperations:
     get:
@@ -13,6 +16,9 @@ App\Entity\Machine:
       security: 'is_granted("MACHINE_READ", object)'
       normalization_context:
         groups: ['machine_read']
+      openapi_context:
+        summary: Get machine
+        description: End point to get one machine
 
     patch_wallet:
       method: 'PATCH'
@@ -22,18 +28,17 @@ App\Entity\Machine:
         groups: ['machine_read']
       denormalization_context:
         groups: ['machine_patch_insert_wallet']
-      swagger_context:
-        parameters:
-          - in: body
-            name: machine
-            description: The wallet to update
-            schema:
-              type: object
-              required:
-                - wallet
-              properties:
-                wallet:
-                  type: number
+      openapi_context:
+        summary: Return wallet of vending machine
+        description: End point to return all wallet of vending machine
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  wallet:
+                    type: number
 
     return_wallet:
       method: 'PATCH'
@@ -43,6 +48,14 @@ App\Entity\Machine:
         groups: ['machine_read']
       denormalization_context:
         groups: ['machine_patch_return_wallet']
+      openapi_context:
+        summary: Return wallet of vending machine
+        description: End point to return all wallet of vending machine
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
 
     patch_cash:
       method: 'PATCH'
@@ -52,18 +65,17 @@ App\Entity\Machine:
         groups: ['machine_read_insert_cash']
       denormalization_context:
         groups: ['machine_patch_insert_cash']
-      swagger_context:
-        parameters:
-          - in: body
-            name: machine
-            description: The wallet to update
-            schema:
-              type: object
-              required:
-                - cash
-              properties:
-                cash:
-                  type: number
+      openapi_context:
+        summary: Add cash to vending machine
+        description: End point to add money to vending machine
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cash:
+                    type: number
 
     return_cash:
       method: 'PATCH'
@@ -73,6 +85,14 @@ App\Entity\Machine:
         groups: ['machine_read_return_cash']
       denormalization_context:
         groups: ['machine_patch_return_cash']
+      openapi_context:
+        summary: Return cash of vending machine
+        description: End point to return all cash of vending machine
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
 
   properties:
     products:
